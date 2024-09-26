@@ -1,0 +1,18 @@
+{
+  "loras_directory_path": "/Users/ghost/code/stable-diffusion-webui/models/Lora",
+  "sd_model_path": "/Users/ghost/code/stable-diffusion-webui/models/Stable-diffusion/dreamshaperXL_v21TurboDPMSDE.safetensors",
+  "results_path": "./lora_eval/results/s3ulgg",
+  "face_compare_image_path": "/Users/ghost/Desktop/Untitled.png",
+  "trigger_word": "s3ulgg",
+  "seed": 1,
+  "prompts": [
+    ["A close up photo of {triggerword} wearing a red dress", "bad quality, worst quality"],
+    ["A mid-body shot of {triggerword} wearing red lingerie", "bad quality, worst quality"],
+    ["A photo of {triggerword} wearing a white mini skirt and thigh high boots", "bad quality, worst quality"]
+  ],
+  "device": "mps",
+  "guidance_scale": 2.0,
+  "inference_steps": 8,
+  "samples_width": 1024,
+  "samples_height": 1024
+}
