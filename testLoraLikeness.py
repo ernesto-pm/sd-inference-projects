@@ -70,7 +70,7 @@ def test_lora_likeness(lora_likeness_config_path: str):
     loras = get_lora_file_paths(config.loras_directory_path)
 
     # Create the sdxl pipeline we shall use
-    pipe: StableDiffusionXLPipeline = StableDiffusionXLPipeline.from_single_file(config.sd_model_path, torch_dtype=torch.float16)
+    pipe: StableDiffusionXLPipeline = StableDiffusionXLPipeline.from_single_file(str(config.sd_model_path), torch_dtype=torch.float16)
     pipe.to(config.device.value)
     pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config)  # ToDo: add scheduler to config options
     generator = torch.Generator(device=config.device).manual_seed(config.seed)
@@ -103,7 +103,9 @@ def test_lora_likeness(lora_likeness_config_path: str):
         pipe.unload_lora_weights()
         pipe.delete_adapters([lora_filename])
 
+
         # Debug, check if this works lol
+        '''
         for prompt_index, p in enumerate(config.prompts):
             prompt = p[0].replace("{triggerword}", config.trigger_word)
             negative_prompt = p[1].replace("{triggerword}", config.trigger_word)
@@ -119,7 +121,7 @@ def test_lora_likeness(lora_likeness_config_path: str):
 
             img_filename = config.results_path.joinpath(f"{lora_filename}_prompt_{prompt_index}_disabled.png")
             output.images[0].save(img_filename)
-
+        '''
 
 if __name__ == "__main__":
     arguably.run()
