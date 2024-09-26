@@ -6,9 +6,7 @@
   "trigger_word": "s3ulgg",
   "seed": 1,
   "prompts": [
-    ["A close up photo of {triggerword} wearing a red dress", "bad quality, worst quality"],
-    ["A mid-body shot of {triggerword} wearing red lingerie", "bad quality, worst quality"],
-    ["A photo of {triggerword} wearing a white mini skirt and thigh high boots", "bad quality, worst quality"]
+    ["A photo of {triggerword} wearing a red dress", "bad quality, worst quality"]
   ],
   "device": "mps",
   "guidance_scale": 2.0,
