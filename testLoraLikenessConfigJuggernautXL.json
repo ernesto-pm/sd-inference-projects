@@ -1,0 +1,19 @@
+{
+  "loras_directory_path": "C:\\Users\\ghost\\Desktop\\code\\OneTrainer\\workspace\\runSeulgiObsidianOne\\save",
+  "sd_model_path": "C:\\Users\\ghost\\Desktop\\code\\stable-diffusion-webui\\models\\Stable-diffusion\\Juggernaut_X_RunDiffusion_Hyper.safetensors",
+  "results_path": ".\\output\\s3ulgg",
+  "face_compare_image_path": "C:\\Users\\ghost\\Desktop\\datasets\\s3ulggMayTry\\00096.png",
+  "trigger_word": "s3ulgg",
+  "seed": 1,
+  "prompts": [
+    [
+      "a realistic photo of {triggerword}, closeup, solo, wearing a red dress, cinematic film still",
+      "(low quality, worst quality:1.4), cgi, text, signature, watermark, film grain, blurry"
+    ]
+  ],
+  "device": "cuda",
+  "guidance_scale": 3.0,
+  "inference_steps": 30,
+  "samples_width": 1024,
+  "samples_height": 1024
+}
