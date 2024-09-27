@@ -5,11 +5,14 @@ from utils.json_utils import load_json_file
 from pydantic import BaseModel, field_validator, ValidationInfo
 from typing import List
 from enum import Enum
-from diffusers import StableDiffusionXLPipeline, DPMSolverMultistepScheduler
+from diffusers import StableDiffusionXLPipeline, DPMSolverMultistepScheduler, DPMSolverSinglestepScheduler
 
 class DeviceTypeEnum(str, Enum):
     mps = "mps"
     cuda = "cuda"
+
+class SamplerTypeEnum(str, Enum):
+    dpmppsdekarras = "DPM++ SDE Karras"
 
 class LoraLikenessConfig(BaseModel):
     loras_directory_path: Path  # dir
@@ -22,6 +25,7 @@ class LoraLikenessConfig(BaseModel):
     device: DeviceTypeEnum
     guidance_scale: float
     inference_steps: int
+    sampler: SamplerTypeEnum
     samples_width: int
     samples_height: int
 
@@ -52,6 +56,7 @@ class LoraLikenessConfig(BaseModel):
         return v
 
 
+
 def get_lora_file_paths(lora_directory_path: Path) -> List[Path]:
     loras = []
     for file in lora_directory_path.glob("*.safetensors"):
@@ -72,7 +77,10 @@ def test_lora_likeness(lora_likeness_config_path: str):
     # Create the sdxl pipeline we shall use
     pipe: StableDiffusionXLPipeline = StableDiffusionXLPipeline.from_single_file(str(config.sd_model_path), torch_dtype=torch.float16)
     pipe.to(config.device.value)
-    pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config)  # ToDo: add scheduler to config options
+    if config.sampler == SamplerTypeEnum.dpmppsdekarras:
+        pipe.scheduler = DPMSolverSinglestepScheduler.from_config(pipe.scheduler.config, use_karras_sigmas=True)
+    else:
+        pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config)  # ToDo: add scheduler to config options
     generator = torch.Generator(device=config.device).manual_seed(config.seed)
 
     # We run the inference and save the images

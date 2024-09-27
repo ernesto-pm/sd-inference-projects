@@ -18,6 +18,7 @@
   "device": "cuda",
   "guidance_scale": 2.0,
   "inference_steps": 8,
+  "sampler": "DPM++ SDE Karras",
   "samples_width": 1024,
   "samples_height": 1024
 }

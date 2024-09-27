@@ -1,0 +1,20 @@
+{
+  "loras_directory_path": "C:\\Users\\ghost\\Desktop\\code\\OneTrainer\\workspace\\runSeulgiObsidianOne\\save",
+  "sd_model_path": "C:\\Users\\ghost\\Desktop\\code\\stable-diffusion-webui\\models\\Stable-diffusion\\realvisxlV50_v50LightningBakedvae.safetensors",
+  "results_path": ".\\output\\s3ulggRealVis",
+  "face_compare_image_path": "C:\\Users\\ghost\\Desktop\\datasets\\s3ulggMayTry\\00096.png",
+  "trigger_word": "s3ulgg",
+  "seed": 1,
+  "prompts": [
+    [
+      "instagram photo, front view, portrait photo of {triggerword}, cinematic shot",
+      "worst quality, low quality"
+    ]
+  ],
+  "device": "cuda",
+  "guidance_scale": 2.0,
+  "inference_steps": 5,
+  "sampler": "DPM++ SDE Karras",
+  "samples_width": 1024,
+  "samples_height": 1024
+}
